@@ -2,4 +2,5 @@
     <string name="app_name">HamzasStore</string>
     <string name="cart">Cart</string>
     <string name="home">Home</string>
+    <string name="add_to_cart">Add to cart</string>
 </resources>
