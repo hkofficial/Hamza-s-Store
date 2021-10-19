@@ -1,9 +1,9 @@
-package com.hk.hamzasstore
+package com.hk.hamzasstore.commons.presenter
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import com.hk.hamzasstore.commons.TabsPagerAdapter
+import com.hk.hamzasstore.R
 import com.hk.hamzasstore.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

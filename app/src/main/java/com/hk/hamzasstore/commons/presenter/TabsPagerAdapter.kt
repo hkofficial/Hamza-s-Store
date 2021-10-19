@@ -1,4 +1,4 @@
-package com.hk.hamzasstore.commons
+package com.hk.hamzasstore.commons.presenter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
