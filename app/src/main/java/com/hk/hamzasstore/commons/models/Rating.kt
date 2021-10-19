@@ -1,4 +1,4 @@
-package com.hk.hamzasstore.home
+package com.hk.hamzasstore.commons.models
 
 import com.google.gson.annotations.SerializedName
 

@@ -3,7 +3,7 @@ package com.hk.hamzasstore.home.presenter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.hk.hamzasstore.commons.utilities.OnCompleteListener
-import com.hk.hamzasstore.home.Product
+import com.hk.hamzasstore.commons.models.Product
 import com.hk.hamzasstore.home.domain.GetProductsUseCase
 import kotlinx.coroutines.launch
 

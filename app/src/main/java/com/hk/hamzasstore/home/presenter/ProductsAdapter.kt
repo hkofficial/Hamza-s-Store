@@ -14,8 +14,7 @@ class ProductsAdapter(private val productsViewModel: ProductsViewModel) :
                 layoutInflater,
                 parent,
                 false
-            ),
-            productsViewModel
+            )
         )
     }
 

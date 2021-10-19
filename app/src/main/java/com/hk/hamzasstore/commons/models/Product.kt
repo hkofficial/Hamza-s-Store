@@ -1,4 +1,4 @@
-package com.hk.hamzasstore.home
+package com.hk.hamzasstore.commons.models
 
 import com.google.gson.annotations.SerializedName
 
@@ -9,5 +9,5 @@ data class Product(
     @SerializedName("description") val description: String,
     @SerializedName("category") val category: String,
     @SerializedName("image") val image: String,
-    @SerializedName("rating") val rating: Rating
+    @SerializedName("rating") val rating: Rating,
 )

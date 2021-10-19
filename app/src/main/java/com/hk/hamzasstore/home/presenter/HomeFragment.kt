@@ -9,12 +9,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.hk.hamzasstore.R
 import com.hk.hamzasstore.commons.utilities.OnCompleteListener
 import com.hk.hamzasstore.commons.utilities.ResponseState
 import com.hk.hamzasstore.databinding.FragmentHomeBinding
-import com.hk.hamzasstore.home.Product
+import com.hk.hamzasstore.commons.models.Product
 import com.hk.hamzasstore.home.utility.GirdSpacingItemDecoration
 
 
