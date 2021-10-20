@@ -6,20 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hk.hamzasstore.R
 import com.hk.hamzasstore.cart.model.Cart
 import com.hk.hamzasstore.databinding.FragmentCartBinding
-import com.hk.hamzasstore.home.presenter.ProductsAdapter
-import com.hk.hamzasstore.home.utility.GirdSpacingItemDecoration
 
 
 class CartFragment : Fragment() {
 
 
     private lateinit var binding: FragmentCartBinding
-
+    private val cartViewModel: CartViewModel by viewModels()
+    private val cartList = arrayListOf<Cart>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,22 +30,24 @@ class CartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = setRecyclerAdapter()
-        adapter.notifyDataSetChanged()
+        val adapter = setRecyclerAdapter(cartList)
+        cartViewModel.getCartList().observe(viewLifecycleOwner, {
+            if(!it.isNullOrEmpty()) {
+                cartList.clear()
+                cartList.addAll(it)
+                adapter.notifyDataSetChanged()
+            }
+        })
     }
 
-    private fun setRecyclerAdapter(): CartAdapter {
+    private fun setRecyclerAdapter(cartList: ArrayList<Cart>): CartAdapter {
         binding.cartRv.layoutManager =
             LinearLayoutManager(context)
-        val cartItems = arrayListOf<Cart>()
-        cartItems.add(Cart(1,"Dalda",200.0,"",2))
-        cartItems.add(Cart(2,"Tullo",360.0,"",3))
-        cartItems.add(Cart(3,"Nestle pure life",480.0,"",1))
-        cartItems.add(Cart(4,"Dalda",168.1,"",8))
-        val adapter = CartAdapter(cartItems)
+        val adapter = CartAdapter(cartList)
         binding.cartRv.adapter = adapter
         return adapter
     }
+
     companion object {
         @JvmStatic
         fun newInstance() =
