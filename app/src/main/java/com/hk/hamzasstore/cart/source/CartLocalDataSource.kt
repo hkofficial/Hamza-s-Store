@@ -8,10 +8,23 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.withContext
 
 class CartLocalDataSource {
-    suspend fun getCartItems(): Flow<List<Cart>> {
-        return withContext(Dispatchers.IO) {
+    fun getCartItems(): Flow<List<Cart>> {
+        val db = AppDatabase.getDatabase(App.instance.applicationContext)
+        return db.cartDao().getAllCartItems()
+    }
+
+    suspend fun insertCartItem(cart: Cart) {
+        withContext(Dispatchers.IO) {
             val db = AppDatabase.getDatabase(App.instance.applicationContext)
-            return@withContext db.cartDao().getAllCartItems()
+            db.cartDao().insertItemToCart(cart)
         }
     }
+
+    suspend fun getCartById(id: Int): Cart?{
+        return withContext(Dispatchers.IO) {
+            val db = AppDatabase.getDatabase(App.instance.applicationContext)
+            return@withContext db.cartDao().getCartItemById(id)
+        }
+    }
+
 }

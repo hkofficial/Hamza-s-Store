@@ -8,7 +8,8 @@ import com.hk.hamzasstore.databinding.ProductListItemBinding
 import com.hk.hamzasstore.product_detail.presenter.ProductDetailActivity
 
 class ProductsViewHolder(
-    private val binding: ProductListItemBinding
+    private val binding: ProductListItemBinding,
+    private val productsViewModel: ProductsViewModel
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(product: Product) {
 
@@ -20,6 +21,10 @@ class ProductsViewHolder(
             val intent = Intent(binding.root.context, ProductDetailActivity::class.java)
             intent.putExtra("productId", product.id)
             binding.root.context.startActivity(intent)
+        }
+
+        binding.addToCartButton.setOnClickListener{
+            productsViewModel.addProductToCart(adapterPosition)
         }
     }
 }
